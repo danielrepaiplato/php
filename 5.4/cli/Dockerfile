@@ -14,6 +14,7 @@ RUN apt-get -y update \
 RUN docker-php-ext-install \
     pdo_mysql \
     mysql \
+    mysqli \
     mbstring \
     bcmath
 
@@ -25,6 +26,7 @@ RUN chmod 400 /root/.ssh/config
 
 RUN touch /usr/local/etc/php/php.ini
 RUN echo "date.timezone = Europe/London" >> /usr/local/etc/php/php.ini
+#ADD ./mysql.ini /usr/local/etc/php/conf.d/mysql.ini
 
 # Memory Limit
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
