@@ -37,6 +37,10 @@ RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezon
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer --version
 
+RUN git clone https://github.com/wolfcw/libfaketime.git
+WORKDIR /libfaketime/src
+RUN make install
+
 # Set up the volumes and working directory
 VOLUME ["/app"]
 WORKDIR /app
