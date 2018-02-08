@@ -42,7 +42,7 @@ RUN echo "date.timezone = Europe/London" >> /usr/local/etc/php/php.ini
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 
 # Time Zone
-RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
+RUN echo "date.timezone=Europe/London" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer --version
