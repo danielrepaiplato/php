@@ -15,7 +15,8 @@ RUN apt-get -y update \
 RUN docker-php-ext-install \
     pdo_mysql \
     mbstring \
-    bcmath
+    bcmath \
+    sockets
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \

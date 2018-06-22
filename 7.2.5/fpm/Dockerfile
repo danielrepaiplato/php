@@ -13,7 +13,14 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     ssmtp
 
-RUN docker-php-ext-install pdo pdo_mysql mbstring mysqli zip gd
+RUN docker-php-ext-install \
+    pdo \
+    pdo_mysql \
+    mbstring \
+    mysqli \
+    zip \
+    gd \
+    sockets
 
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Europe/London /etc/localtime && echo Europe/London > /etc/timezone
