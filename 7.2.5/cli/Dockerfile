@@ -10,13 +10,17 @@ RUN apt-get -y update \
         unzip \
         wget \
         mysql-client \
-        gnupg2
+        gnupg2 \
+        tar \
+        zip \
+        zlib1g-dev
 
 RUN docker-php-ext-install \
     pdo_mysql \
     mbstring \
     bcmath \
-    sockets
+    sockets \
+    zip
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
