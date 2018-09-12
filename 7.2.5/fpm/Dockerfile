@@ -20,7 +20,8 @@ RUN docker-php-ext-install \
     mysqli \
     zip \
     gd \
-    sockets
+    sockets \
+    bcmath
 
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Europe/London /etc/localtime && echo Europe/London > /etc/timezone
