@@ -20,7 +20,8 @@ RUN docker-php-ext-install \
     mbstring \
     bcmath \
     sockets \
-    zip
+    zip \
+    pcntl
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
@@ -52,7 +53,7 @@ RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 # Time Zone
 RUN echo "date.timezone=Europe/London" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --version=1.6.5 --install-dir=/usr/local/bin --filename=composer
 RUN composer --version
 
 RUN git clone https://github.com/wolfcw/libfaketime.git

@@ -21,7 +21,8 @@ RUN docker-php-ext-install \
     zip \
     gd \
     sockets \
-    bcmath
+    bcmath \
+    pcntl
 
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Europe/London /etc/localtime && echo Europe/London > /etc/timezone
