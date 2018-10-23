@@ -20,6 +20,7 @@ RUN docker-php-ext-install \
     mbstring \
     bcmath \
     sockets \
+    gd \
     zip \
     pcntl
 
