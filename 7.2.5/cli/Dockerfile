@@ -13,6 +13,7 @@ RUN apt-get -y update \
         gnupg2 \
         tar \
         zip \
+        libpng-dev \
         zlib1g-dev
 
 RUN docker-php-ext-install \
