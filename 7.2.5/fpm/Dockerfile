@@ -22,7 +22,9 @@ RUN docker-php-ext-install \
     gd \
     sockets \
     bcmath \
-    pcntl
+    pcntl \
+    opcache
+
 
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Europe/London /etc/localtime && echo Europe/London > /etc/timezone
@@ -38,6 +40,13 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xd
 RUN echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.idekey=\"PHPSTORM\"" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+# install redis extension
+RUN pecl install redis
+RUN docker-php-ext-enable redis
+
+RUN echo "extension=redis.so" >> /usr/local/etc/php/conf.d/redis.ini
+
 
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
