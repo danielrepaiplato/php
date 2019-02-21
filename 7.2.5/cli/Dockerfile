@@ -19,6 +19,7 @@ RUN apt-get -y update \
 
 RUN docker-php-ext-install \
     pdo_mysql \
+    mysqli \
     mbstring \
     bcmath \
     sockets \
