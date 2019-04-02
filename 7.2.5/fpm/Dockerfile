@@ -27,7 +27,7 @@ RUN docker-php-ext-install \
 
 
 # Set timezone
-RUN ln -snf /usr/share/zoneinfo/Europe/London /etc/localtime && echo Europe/London > /etc/timezone
+RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo UTC > /etc/timezone
 RUN "date"
 
 # install xdebug

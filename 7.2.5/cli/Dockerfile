@@ -49,13 +49,13 @@ RUN echo "    StrictHostKeyChecking no" >> /root/.ssh/config
 RUN chmod 400 /root/.ssh/config
 
 RUN touch /usr/local/etc/php/php.ini
-RUN echo "date.timezone = Europe/London" >> /usr/local/etc/php/php.ini
+RUN echo "date.timezone = UTC" >> /usr/local/etc/php/php.ini
 
 # Memory Limit
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 
 # Time Zone
-RUN echo "date.timezone=Europe/London" > $PHP_INI_DIR/conf.d/date_timezone.ini
+RUN echo "date.timezone=UTC" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --version=1.6.5 --install-dir=/usr/local/bin --filename=composer
 RUN composer --version
