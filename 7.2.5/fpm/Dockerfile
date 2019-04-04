@@ -45,9 +45,6 @@ RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-x
 RUN pecl install redis
 RUN docker-php-ext-enable redis
 
-RUN echo "extension=redis.so" >> /usr/local/etc/php/conf.d/redis.ini
-
-
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
 
