@@ -2,6 +2,8 @@ FROM php:5.4
 
 USER root
 
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
+
 RUN apt-get -y update \
     && apt-get -y install \
         curl \
@@ -9,14 +11,17 @@ RUN apt-get -y update \
         make \
         unzip \
         wget \
-        mysql-client
+        mysql-client \
+        zlib1g-dev \
+        zip
 
 RUN docker-php-ext-install \
     pdo_mysql \
     mysql \
     mysqli \
     mbstring \
-    bcmath
+    bcmath \
+    zip
 
 RUN pecl install https://xdebug.org/files/xdebug-2.4.1.tgz \
     && docker-php-ext-enable xdebug \
